@@ -2,6 +2,6 @@
 
 git add .
 
-git commit -m "done"
+git commit -m "add your name and email to AUTHORS file"
 
 git push
