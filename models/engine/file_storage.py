@@ -3,6 +3,7 @@
 import json
 import os.path
 
+
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -27,6 +28,7 @@ class FileStorage:
                     cls_name, obj_id = key.split(".")
                     cls = globals()[cls_name]
                     self.__objects[key] = cls(**value)
+
 
 storage = FileStorage()
 storage.reload()
