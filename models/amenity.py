@@ -1,4 +1,6 @@
-#!/usr/bin/python3from models.base_model import BaseModel
+#!/usr/bin/python3
+
+from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     name = ""

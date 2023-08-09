@@ -5,50 +5,73 @@ import sys
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """Class for command interpreter."""
 
+    valid_classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+    }
     prompt = '(hbnb) '
-
+    
+    
     def do_quit(self, arg):
         """Quit command to exit the program."""
-        return True
+        return (True)
 
     def do_EOF(self, arg):
         """Exit the program at end of file (Ctrl-D)."""
         print()
-        return True
+        return (True)
 
     def emptyline(self):
         """Do nothing when an empty line is entered."""
         pass
 
-    def do_create(self, arg):
-        """Create a new instance of BaseModel and save it to JSON file."""
-        if not arg:
+    def do_create(self, args):
+        """Creates a new instance of a class"""
+        if not args:
             print("** class name missing **")
             return
-        try:
-            new_instance = eval(arg)()
-            new_instance.save()
-            print(new_instance.id)
-        except NameError:
+        
+        class_name = args[0]
+        if class_name not in valid_classes:
             print("** class doesn't exist **")
+            return
+        
+        new_instance = valid_classes[class_name]()
+        new_instance.save()
+        print(new_instance.id)
 
-    def do_show(self, arg):
-        """Show string representation of an instance."""
-        if not arg:
+
+    def do_show(self, args):
+        """Prints the string representation of an instance"""
+        if not args:
             print("** class name missing **")
             return
-        args = arg.split()
-        if args[0] not in ["BaseModel", "User"]:
+        
+        class_name = args[0]
+        if class_name not in valid_classes:
             print("** class doesn't exist **")
             return
+        
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = args[0] + "." + args[1]
+        
+        instance_id = args[1]
+        key = "{}.{}".format(class_name, instance_id)
         if key in storage.all():
             print(storage.all()[key])
         else:
