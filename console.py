@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """Class for command interpreter."""
 
@@ -24,8 +25,7 @@ class HBNBCommand(cmd.Cmd):
         "Review": Review
     }
     prompt = '(hbnb) '
-    
-    
+
     def do_quit(self, arg):
         """Quit command to exit the program."""
         return (True)
@@ -44,32 +44,31 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        
+
         class_name = args[0]
         if class_name not in valid_classes:
             print("** class doesn't exist **")
             return
-        
+
         new_instance = valid_classes[class_name]()
         new_instance.save()
         print(new_instance.id)
-
 
     def do_show(self, args):
         """Prints the string representation of an instance"""
         if not args:
             print("** class name missing **")
             return
-        
+
         class_name = args[0]
         if class_name not in valid_classes:
             print("** class doesn't exist **")
             return
-        
+
         if len(args) < 2:
             print("** instance id missing **")
             return
-        
+
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
         if key in storage.all():
@@ -133,6 +132,7 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()[key]
         setattr(obj, args[2], args[3])
         obj.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

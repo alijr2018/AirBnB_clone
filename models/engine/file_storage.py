@@ -1,4 +1,4 @@
-#!/usr/bin/python3 
+#!/usr/bin/python3
 
 import json
 from models.base_model import BaseModel
@@ -9,8 +9,9 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
-    """Handles serialization and deserialization of objects to/from JSON files."""
+    """Handles serialization & deserialization of objects to/from JSON files"""
 
     __file_path = "file.json"
     __objects = {}
