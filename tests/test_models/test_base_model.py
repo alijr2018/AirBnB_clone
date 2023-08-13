@@ -63,7 +63,8 @@ class TestBase(unittest.TestCase):
         b.save()
         key = "{}.{}".format(type(b).__name__, b.id)
         d = {key: b.to_dict()}
-        self.assertTrue(os.path.isfile(FileStorage._FileStorage__file_path))
+        file_path = FileStorage._FileStorage__file_path
+        self.assertTrue(os.path.isfile(file_path))
         with open(FileStorage._FileStorage__file_path,
                   "r", encoding="utf-8") as f:
             self.assertEqual(len(f.read()), len(json.dumps(d)))
