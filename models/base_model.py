@@ -1,75 +1,62 @@
 #!/usr/bin/python3
-from datetime import datetime
-from uuid import uuid4
+"""
+Module: base_model.py
+"""
 import models
-
-"""
-Parent class to all classes in the AirBnB clone project
-"""
+import uuid
+from datetime import datetime
 
 
 class BaseModel():
-    """Parent class for AirBnB clone project
-    Methods:
-        __init__(self, *args, **kwargs)
-        __str__(self)
-        __save(self)
-        __repr__(self)
-        to_dict(self)
+    """
+    Base class which defines all common
+    attributes/methods for other classes
     """
 
     def __init__(self, *args, **kwargs):
         """
-        Initialize attributes: uuid4, dates when class was created/updated
+        instatiates an object with it's
+        attributes
         """
-        date_format = '%Y-%m-%dT%H:%M:%S.%f'
-        if kwargs:
+        if len(kwargs) > 0:
             for key, value in kwargs.items():
-                if "created_at" == key:
-                    self.created_at = datetime.strptime(kwargs["created_at"],
-                                                        date_format)
-                elif "updated_at" == key:
-                    self.updated_at = datetime.strptime(kwargs["updated_at"],
-                                                        date_format)
-                elif "__class__" == key:
-                    pass
-                else:
-                    setattr(self, key, value)
-        else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            models.storage.new(self)
+                if key == '__class__':
+                    continue
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.fromisoformat(value)
+                setattr(self, key, value)
+            return
+
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+        models.storage.new(self)
 
     def __str__(self):
         """
-        Return class name, id, and the dictionary
+        Returns the string representation
+        of the instance
         """
-        return ('[{}] ({}) {}'.
-                format(self.__class__.__name__, self.id, self.__dict__))
-
-    def __repr__(self):
-        """
-        returns string repr
-        """
-        return (self.__str__())
+        return "[{}] ({}) {}".format(
+            type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """
-        Instance method to:
-        - update current datetime
-        - invoke save() function &
-        - save to serialized file
+        updates the public instance attribute
+        updated_at with the current datetime
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """
-        Return dictionary of BaseModel with string formats of times
+        returns a dictionary containing all keys/values
+        of __dict__ of the instance
         """
-        dic = self.__dict__.copy()
-        dic["created_at"] = self.created_at.isoformat()
-        dic["updated_at"] = self.updated_at.isoformat()
-        dic["__class__"] = self.__class__.__name__
-        return dic
+        dict = {**self.__dict__}
+        dict['__class__'] = type(self).__name__
+        dict['created_at'] = dict['created_at'].isoformat()
+        dict['updated_at'] = dict['updated_at'].isoformat()
+
+        return (dict)
