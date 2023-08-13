@@ -3,11 +3,14 @@
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
     """  that defines all common attributes/methods for other classes."""
+
     def __init__(self, *args, **kwargs):
+        """Initialization of a Base instance."""
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
@@ -22,6 +25,8 @@ class BaseModel:
             self.updated_at = datetime.now()
 
     def __str__(self):
+        """Returns a readable string representation
+        of BaseModel instance"""
         class_name = self.__class__.__name__
         instance_id = self.id
         instance_dict = self.__dict__
