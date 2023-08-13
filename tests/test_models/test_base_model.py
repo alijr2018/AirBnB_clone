@@ -26,21 +26,20 @@ class TestBase(unittest.TestCase):
     def test_initialization_positive(self):
         x = BaseModel()
         b2_uuid = str(uuid.uuid4())
-        b2 = BaseModel(id=b2_uuid, name="The weeknd", album="Trilogy")
+        y = BaseModel(id=b2_uuid, name="The weeknd", album="Trilogy")
         self.assertIsInstance(x.id, str)
-        self.assertIsInstance(b2.id, str)
-        self.assertEqual(b2_uuid, b2.id)
-        self.assertEqual(b2.album, "Trilogy")
-        self.assertEqual(b2.name, "The weeknd")
+        self.assertIsInstance(y.id, str)
+        self.assertEqual(b2_uuid, y.id)
+        self.assertEqual(y.album, "Trilogy")
+        self.assertEqual(y.name, "The weeknd")
         self.assertIsInstance(x.created_at, datetime)
         self.assertIsInstance(x.created_at, datetime)
-        self.assertEqual(str(type(x)),
-                         "<class 'models.base_model.BaseModel'>")
+        self.assertEqual(str(type(x)), "<class 'models.base_model.BaseModel'>")
 
     def test_dict(self):
         x = BaseModel()
         b2_uuid = str(uuid.uuid4())
-        b2 = BaseModel(id=b2_uuid, name="The weeknd", album="Trilogy")
+        y = BaseModel(id=b2_uuid, name="The weeknd", album="Trilogy")
         x_dict = x.to_dict()
         self.assertIsInstance(x_dict, dict)
         self.assertIn('id', x_dict.keys())
@@ -48,7 +47,7 @@ class TestBase(unittest.TestCase):
         self.assertIn('updated_at', x_dict.keys())
         self.assertEqual(x_dict['__class__'], type(x).__name__)
         with self.assertRaises(KeyError) as e:
-            b2.to_dict()
+            y.to_dict()
 
     def test_save(self):
         b = BaseModel()
