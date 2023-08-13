@@ -13,16 +13,6 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
-current_classes = {
-    'BaseModel': BaseModel,
-    'User': User,
-    'Amenity': Amenity,
-    'City': City,
-    'State': State,
-    'Place': Place,
-    'Review': Review
-}
-
 
 class FileStorage():
     """serializes instances to a JSON file and deserializes it to instances"""
@@ -46,6 +36,16 @@ class FileStorage():
 
     def reload(self):
         """deserializes the JSON file to __objects if the JSON file exists"""
+        current_classes = {
+            'BaseModel': BaseModel,
+            'User': User,
+            'Amenity': Amenity,
+            'City': City,
+            'State': State,
+            'Place': Place,
+            'Review': Review
+        }
+
         if not os.path.exists(FileStorage.__file_path):
             return
         with open(FileStorage.__file_path, 'r') as f:
