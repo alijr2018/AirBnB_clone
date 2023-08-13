@@ -2,9 +2,10 @@
 
 import uuid
 from datetime import datetime
-
+import models
 
 class BaseModel:
+    """that defines all common attributes/methods for other classes"""
     def __init__(self, *args, **kwargs):
         if kwargs:
             kwargs.pop('__class__', None)
