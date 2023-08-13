@@ -12,7 +12,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
-current_classes = {
+valid_classes = {
     'BaseModel': BaseModel,
     'User': User,
     'Amenity': Amenity,
@@ -54,5 +54,5 @@ class FileStorage():
             if deserialized is None:
                 return
             FileStorage.__objects = {
-                k: current_classes[k.split('.')[0]](**v)
+                k: valid_classes[k.split('.')[0]](**v)
                 for k, v in deserialized.items()}
