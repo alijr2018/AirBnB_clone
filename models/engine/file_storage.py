@@ -22,6 +22,7 @@ current_classes = {
     'Review': Review
 }
 
+
 class FileStorage():
     """
     serializes instances to a JSON file and deserializes JSON file to instances
@@ -45,8 +46,8 @@ class FileStorage():
                 {k: v.to_dict() for k, v in FileStorage.__objects.items()}, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects only if the JSON file exists"""
-        
+        """deserializes the JSON file to __objects if the JSON file exists"""
+
         if not os.path.exists(FileStorage.__file_path):
             return
         with open(FileStorage.__file_path, 'r') as f:
