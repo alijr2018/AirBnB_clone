@@ -27,6 +27,8 @@ class FileStorage:
                 objects_dict = json.load(file)
                 for key, value in objects_dict.items():
                     class_name = value['__class__']
+                    # Import BaseModel class only when needed
+                    from models.base_model import BaseModel
                     obj = eval(class_name)(**value)
                     FileStorage.__objects[key] = obj
         except FileNotFoundError:
