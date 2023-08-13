@@ -14,7 +14,7 @@ from models.review import Review
 
 
 class TestFileStorage_instantiation(unittest.TestCase):
-    """TestFileStorage_instantiation"""
+    """TestFileStorage_instantiation."""
 
     def test_FileStorage_instantiation_no_args(self):
         self.assertEqual(type(FileStorage()), FileStorage)
@@ -34,7 +34,7 @@ class TestFileStorage_instantiation(unittest.TestCase):
 
 
 class TestFileStorage_methods(unittest.TestCase):
-    """TestFileStorage_methods"""
+    """TestFileStorage_methods."""
 
     def setUp(self):
         pass

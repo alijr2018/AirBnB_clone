@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Module: console.py"""
+"""
+Module: console.py
+ a program called console.py that contains,
+ the entry point of the command interpreter.
+"""
 
 import cmd
 from models.base_model import BaseModel
@@ -23,6 +27,7 @@ valid_classes = {
 
 
 class HBNBCommand(cmd.Cmd):
+    """class definition"""
     prompt = '(hbnb)  '
 
     def do_EOF(self, line):
