@@ -3,7 +3,6 @@
 class FileStorage that serializes instances to a JSON file,
 and deserializes JSON file to instances.
 """
-
 import os
 import json
 from models.base_model import BaseModel
@@ -14,21 +13,21 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
-current_classes = {
-    'BaseModel': BaseModel,
-    'User': User,
-    'Amenity': Amenity,
-    'City': City,
-    'State': State,
-    'Place': Place,
-    'Review': Review
-}
-
 
 class FileStorage():
     """serializes instances to a JSON file and deserializes it to instances"""
     __file_path = "file.json"
     __objects = {}
+
+    current_classes = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'Amenity': Amenity,
+        'City': City,
+        'State': State,
+        'Place': Place,
+        'Review': Review
+    }
 
     def all(self):
         """returns the dictionary __objects"""
