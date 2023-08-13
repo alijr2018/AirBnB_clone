@@ -16,7 +16,7 @@ class FileStorage:
 
     def all(self):
         """Sets new obj in __objects dictionary."""
-        return self.__objects
+        return (self.__objects)
 
     def new(self, obj):
         """Sets new obj in __objects dictionary."""
@@ -39,12 +39,12 @@ class FileStorage:
                 for key, value in loaded_objs.items():
                     class_name = value['__class__']
                     del value['__class__']
-                    value['created_at'] = datetime.strptime(value['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
-                    value['updated_at'] = datetime.strptime(value['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
+                    y = value['created_at']
+                    x = '%Y-%m-%dT%H:%M:%S.%f'
+                    c = value['updated_at']
+                    value['created_at'] = datetime.strptime(y, x)
+                    value['updated_at'] = datetime.strptime(c, x)
                     new_obj = globals()[class_name](**value)
                     self.__objects[key] = new_obj
         except FileNotFoundError:
             pass
-
-    def close(self):
-        self.reload()
