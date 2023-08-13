@@ -1,4 +1,5 @@
-"""Testing the `base_model` module."""
+#!/usr/bin/python3
+
 import json
 import os
 import time
