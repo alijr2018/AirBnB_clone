@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module: file_storage.py
+class FileStorage that serializes instances to a JSON file,
+and deserializes JSON file to instances.
 """
 import os
 import json
@@ -24,9 +25,7 @@ current_classes = {
 
 
 class FileStorage():
-    """
-    serializes instances to a JSON file and deserializes JSON file to instances
-    """
+    """serializes instances to a JSON file and deserializes it to instances"""
     __file_path = "file.json"
     __objects = {}
 
