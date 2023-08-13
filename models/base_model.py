@@ -8,16 +8,12 @@ from datetime import datetime
 
 
 class BaseModel():
-    """
-    Base class which defines all common
-    attributes/methods for other classes
+    """BaseModel that defines all common attributes/methods for,
+       other classes.
     """
 
     def __init__(self, *args, **kwargs):
-        """
-        instatiates an object with it's
-        attributes
-        """
+
         if len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key == '__class__':
