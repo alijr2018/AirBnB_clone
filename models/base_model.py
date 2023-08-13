@@ -5,7 +5,6 @@ import uuid
 from datetime import datetime
 
 
-
 class BaseModel:
     """  that defines all common attributes/methods for other classes."""
 
@@ -24,7 +23,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             from models import storage
-            storage.new(self) 
+            storage.new(self)
 
     def __str__(self):
         """Returns a readable string representation
