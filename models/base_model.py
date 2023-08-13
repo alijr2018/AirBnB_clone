@@ -27,17 +27,13 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-
-        return "[{}] ({}) {}".format(
-            type(self).__name__, self.id, self.__dict__)
+        return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
 
     def save(self):
-
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-
         dict = {**self.__dict__}
         dict['__class__'] = type(self).__name__
         dict['created_at'] = dict['created_at'].isoformat()
