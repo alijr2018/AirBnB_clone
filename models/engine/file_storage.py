@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 Module: file_storage.py
-Defines a `FileStorage` class.
 """
 import os
 import json
@@ -16,8 +15,7 @@ from models.place import Place
 
 class FileStorage():
     """
-    serializes instances to a JSON file and
-    deserializes JSON file to instances
+    serializes instances to a JSON file and deserializes JSON file to instances
     """
     __file_path = "file.json"
     __objects = {}
@@ -45,8 +43,7 @@ class FileStorage():
 
     def reload(self):
         """
-        deserializes the JSON file to __objects only if the JSON
-        file exists; otherwise, does nothing
+        deserializes the JSON file to __objects only if the JSON file exists
         """
         current_classes = {'BaseModel': BaseModel, 'User': User,
                            'Amenity': Amenity, 'City': City, 'State': State,
