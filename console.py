@@ -11,7 +11,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """Exit the program gracefully at EOF"""
-        print("")  # Print a new line before exiting
+        print("")
         return (True)
 
 
