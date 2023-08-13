@@ -5,7 +5,6 @@ Unittest classes:
     TestFileStorage_methods
 """
 import os
-import pep8
 import json
 import models
 import unittest
