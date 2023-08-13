@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 import json
-from datetime import datetime
-
 
 class FileStorage:
     __file_path = "file.json"
@@ -15,25 +13,22 @@ class FileStorage:
         self.__objects[key] = obj
 
     def save(self):
-        serialized = {}
-        for key, value in self.__objects.items():
-            serialized[key] = value.to_dict()
-        with open(self.__file_path, 'w', encoding="utf-8") as file:
-            json.dump(serialized, file)
+        data = {}
+        for key, obj in self.__objects.items():
+            data[key] = obj.to_dict()
+        with open(self.__file_path, "w", encoding="utf-8") as file:
+            json.dump(data, file)
 
     def reload(self):
         try:
-            with open(self.__file_path, 'r', encoding="utf-8") as file:
-                loaded_objs = json.load(file)
-                for key, value in loaded_objs.items():
-                    class_name = value['__class__']
-                    del value['__class__']
-                    value['created_at'] = datetime.strptime(value['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
-                    value['updated_at'] = datetime.strptime(value['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
-                    new_obj = globals()[class_name](**value)
-                    self.__objects[key] = new_obj
+            with open(self.__file_path, "r", encoding="utf-8") as file:
+                data = json.load(file)
+                from models.base_model import BaseModel
+                for key, value in data.items():
+                    cls_name, obj_id = key.split(".")
+                    cls = BaseModel if cls_name == "BaseModel" else None
+                    if cls:
+                        obj = cls(**value)
+                        self.__objects[key] = obj
         except FileNotFoundError:
             pass
-
-    def close(self):
-        self.reload()
