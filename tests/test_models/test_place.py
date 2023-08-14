@@ -21,57 +21,54 @@ class TestPlace(unittest.TestCase):
 
     def test_params(self):
 
-        p1 = Place()
+        y = Place()
         p3 = Place("hello", "wait", "in")
-        k = f"{type(p1).__name__}.{p1.id}"
-        self.assertIsInstance(p1.name, str)
+        k = f"{type(y).__name__}.{y.id}"
+        self.assertIsInstance(y.name, str)
         self.assertIn(k, storage.all())
         self.assertEqual(p3.name, "")
 
-        self.assertIsInstance(p1.name, str)
-        self.assertIsInstance(p1.user_id, str)
-        self.assertIsInstance(p1.city_id, str)
-        self.assertIsInstance(p1.description, str)
-        self.assertIsInstance(p1.number_bathrooms, int)
-        self.assertIsInstance(p1.number_rooms, int)
-        self.assertIsInstance(p1.price_by_night, int)
-        self.assertIsInstance(p1.max_guest, int)
-        self.assertIsInstance(p1.longitude, float)
-        self.assertIsInstance(p1.latitude, float)
-        self.assertIsInstance(p1.amenity_ids, list)
+        self.assertIsInstance(y.name, str)
+        self.assertIsInstance(y.user_id, str)
+        self.assertIsInstance(y.city_id, str)
+        self.assertIsInstance(y.description, str)
+        self.assertIsInstance(y.number_bathrooms, int)
+        self.assertIsInstance(y.number_rooms, int)
+        self.assertIsInstance(y.price_by_night, int)
+        self.assertIsInstance(y.max_guest, int)
+        self.assertIsInstance(y.longitude, float)
+        self.assertIsInstance(y.latitude, float)
+        self.assertIsInstance(y.amenity_ids, list)
 
     def test_init(self):
 
-        p1 = Place()
-        p2 = Place(**p1.to_dict())
-        self.assertIsInstance(p1.id, str)
-        self.assertIsInstance(p1.created_at, datetime)
-        self.assertIsInstance(p1.updated_at, datetime)
-        self.assertEqual(p1.updated_at, p2.updated_at)
+        y = Place()
+        x = Place(**y.to_dict())
+        self.assertIsInstance(y.id, str)
+        self.assertIsInstance(y.created_at, datetime)
+        self.assertIsInstance(y.updated_at, datetime)
+        self.assertEqual(y.updated_at, x.updated_at)
 
     def test_str(self):
-        """Test method for str representation"""
-        p1 = Place()
-        string = f"[{type(p1).__name__}] ({p1.id}) {p1.__dict__}"
-        self.assertEqual(p1.__str__(), string)
+        y = Place()
+        string = f"[{type(y).__name__}] ({y.id}) {y.__dict__}"
+        self.assertEqual(y.__str__(), string)
 
     def test_save(self):
-        """Test method for save"""
-        p1 = Place()
-        old_update = p1.updated_at
-        p1.save()
-        self.assertNotEqual(p1.updated_at, old_update)
+        y = Place()
+        old_update = y.updated_at
+        y.save()
+        self.assertNotEqual(y.updated_at, old_update)
 
     def test_todict(self):
-        """Test method for dict"""
-        p1 = Place()
-        p2 = Place(**p1.to_dict())
-        a_dict = p2.to_dict()
-        self.assertIsInstance(a_dict, dict)
-        self.assertEqual(a_dict['__class__'], type(p2).__name__)
-        self.assertIn('created_at', a_dict.keys())
-        self.assertIn('updated_at', a_dict.keys())
-        self.assertNotEqual(p1, p2)
+        y = Place()
+        x = Place(**y.to_dict())
+        z = x.to_dict()
+        self.assertIsInstance(z, dict)
+        self.assertEqual(z['__class__'], type(x).__name__)
+        self.assertIn('created_at', z.keys())
+        self.assertIn('updated_at', z.keys())
+        self.assertNotEqual(y, x)
 
 
 if __name__ == "__main__":
