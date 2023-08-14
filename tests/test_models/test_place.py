@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+"""Module: test_place.py"""
 import unittest
 import os
 from models.place import Place
@@ -10,7 +10,7 @@ import uuid
 
 
 class TestPlace(unittest.TestCase):
-
+    """Place model class test case"""
     @classmethod
     def setUpClass(cls):
         """Setup the unittest"""
