@@ -22,11 +22,11 @@ class TestPlace(unittest.TestCase):
     def test_params(self):
 
         y = Place()
-        p3 = Place("hello", "wait", "in")
+        q = Place("hello", "wait", "in")
         k = f"{type(y).__name__}.{y.id}"
         self.assertIsInstance(y.name, str)
         self.assertIn(k, storage.all())
-        self.assertEqual(p3.name, "")
+        self.assertEqual(q.name, "")
 
         self.assertIsInstance(y.name, str)
         self.assertIsInstance(y.user_id, str)
@@ -56,9 +56,9 @@ class TestPlace(unittest.TestCase):
 
     def test_save(self):
         y = Place()
-        old_update = y.updated_at
+        updated = y.updated_at
         y.save()
-        self.assertNotEqual(y.updated_at, old_update)
+        self.assertNotEqual(y.updated_at, updated)
 
     def test_todict(self):
         y = Place()
