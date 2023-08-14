@@ -1,28 +1,25 @@
 #!/usr/bin/python3
-"""Unit tests for the `city` module.
-"""
+"""test for place.py"""
+
 import os
 import unittest
+from datetime import datetime
 from models.engine.file_storage import FileStorage
 from models.place import Place
 from models import storage
-from datetime import datetime
 
 
 class TestPlace(unittest.TestCase):
-    """Test cases for the `Place` class."""
 
     def setUp(self):
         pass
 
     def tearDown(self) -> None:
-        """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
     def test_params(self):
-        """Test method for class attributes"""
 
         p1 = Place()
         p3 = Place("hello", "wait", "in")
@@ -44,7 +41,6 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(p1.amenity_ids, list)
 
     def test_init(self):
-        """Test method for public instances"""
 
         p1 = Place()
         p2 = Place(**p1.to_dict())
