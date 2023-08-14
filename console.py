@@ -22,7 +22,7 @@ valid_classes = {
     "Amenity": Amenity,
     "City": City,
     "Review": Review,
-    "State": State
+    "State": State,
 }
 
 
@@ -95,22 +95,20 @@ class HBNBCommand(cmd.Cmd):
             else:
                 storage.all().pop(new_str)
                 storage.save()
-
-    def do_all(self, line):
+                
+    def do_all(self, arg):
         """ Print all instances in string representation """
-        objects = []
-        if line == "":
-            print([str(value) for key, value in storage.all().items()])
+        argl = parse(arg)
+        if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
         else:
-            st = line.split(" ")
-            if st[0] not in valid_classes:
-                print("** class doesn't exist **")
-            else:
-                for key, value in storage.all().items():
-                    clas = key.split(".")
-                    if clas[0] == st[0]:
-                        objects.append(str(value))
-                print(objects)
+            objl = []
+            for obj in storage.all().values():
+                if len(argl) > 0 and argl[0] == obj.__class__.__name__:
+                    objl.append(obj.__str__())
+                elif len(argl) == 0:
+                    objl.append(obj.__str__())
+            print(objl)
 
     def do_update(self, line):
         """Update an instance based on the class name and id."""
