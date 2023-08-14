@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 storage.all().pop(new_str)
                 storage.save()
-                
+
     def do_all(self, arg):
         """ Print all instances in string representation """
         argl = parse(arg)
