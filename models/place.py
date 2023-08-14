@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Module: place.py"""
 from models.base_model import BaseModel
 
 
