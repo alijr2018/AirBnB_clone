@@ -33,6 +33,7 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    
 }
 .locations {
     border-right: 1px solid #DDDDDD;
