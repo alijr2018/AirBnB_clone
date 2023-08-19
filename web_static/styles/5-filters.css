@@ -25,15 +25,16 @@
 .filters button:hover {
     opacity: 90%;
 }
-.locations .amenities {
+.locations, .amenities {
     height: 100%;
     width: 25%;
-    display: inline-block;
+    padding: 15px, 40px;
+    box-sizing: border-box;
+    display: flex;
     top: 0%;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    
 }
 .locations {
     border-right: 1px solid #DDDDDD;
