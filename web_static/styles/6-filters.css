@@ -1,5 +1,5 @@
 .filters {
-    background-color: white;
+    background-color: #FFFFFF;
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
@@ -86,7 +86,7 @@ div:hover > .popover {
 .popover li {
     margin: 10px 0px 5px 0px; 
     list-style: none;
-    padding-left: 20px;
+    padding-left: auto;
     display: block;
     grid-row-gap: 4px;
 }
