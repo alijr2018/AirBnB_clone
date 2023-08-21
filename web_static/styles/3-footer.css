@@ -1,12 +1,13 @@
 footer {
-	background-color: #FFFFFF;
-	height: 60px;
-	width: 100%;
-	display: grid;
-	align-items: center;
-	justify-content: center;
-	border-top: 1px solid #CCCCCC;
-	bottom: 0;
-	position:absolute;
-	text-align: center;
+  background-color: #FFFFFF;
+  height: 60px;
+  width: 100%;
+  border-top: 1px solid #CCCCCC;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
