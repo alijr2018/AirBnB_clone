@@ -46,8 +46,8 @@
   
   .places article .information {
     height: 80px;
-    border-top: 1px solid #dddddd;
-    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
     display: flex;
     justify-content: space-between;
     align-items: center;

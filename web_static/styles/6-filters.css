@@ -1,8 +1,8 @@
 .filters {
-	background-color: #fff;
+	background-color: #FFFFFF;
 	height: 70px;
 	width: 100%;
-	border: 1px solid #dddddd;
+	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	display: flex;
 	align-items: center;
@@ -12,7 +12,7 @@
   .filters button {
 	font-size: 18px;
 	background-color: #ff5a5f;
-	color: #ffffff;
+	color: #FFFFFF;
 	height: 48px;
 	width: 20%;
 	border: none;
@@ -39,7 +39,7 @@
   }
   
   .filters .locations {
-	border-right: 1px solid #dddddd;
+	border-right: 1px solid #DDDDDD;
   }
   
   .filters div h3 {
@@ -65,7 +65,7 @@
 	position: absolute;
 	top: 100%;
 	left: 0;
-	border: 1px solid #dddddd;
+	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	opacity: 0;
 	visibility: hidden;
